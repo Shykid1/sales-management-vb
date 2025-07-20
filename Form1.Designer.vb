@@ -42,6 +42,7 @@ Partial Class Form1
         ToolStripButtonAddCustomer = New IconToolStripButton()
         ToolStripButtonAddStaff = New IconToolStripButton()
         ToolStripButtonViewReports = New IconToolStripButton()
+        ToolStripButtonTheme = New IconToolStripButton()
         StatusStrip1.SuspendLayout()
         PanelDashboard.SuspendLayout()
         CType(DataGridViewRecentSales, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,7 +85,7 @@ Partial Class Form1
         ' 
         LabelTotalSales.AutoSize = True
         LabelTotalSales.Font = New Font("Segoe UI", 14.0!, FontStyle.Bold)
-        LabelTotalSales.Location = New Point(30, 20)
+        LabelTotalSales.Location = New Point(80, 20)
         LabelTotalSales.Name = "LabelTotalSales"
         LabelTotalSales.Size = New Size(120, 25)
         LabelTotalSales.TabIndex = 0
@@ -94,7 +95,7 @@ Partial Class Form1
         ' 
         LabelTotalCustomers.AutoSize = True
         LabelTotalCustomers.Font = New Font("Segoe UI", 14.0!, FontStyle.Bold)
-        LabelTotalCustomers.Location = New Point(220, 20)
+        LabelTotalCustomers.Location = New Point(340, 20)
         LabelTotalCustomers.Name = "LabelTotalCustomers"
         LabelTotalCustomers.Size = New Size(170, 25)
         LabelTotalCustomers.TabIndex = 1
@@ -104,7 +105,7 @@ Partial Class Form1
         ' 
         LabelTotalStaff.AutoSize = True
         LabelTotalStaff.Font = New Font("Segoe UI", 14.0!, FontStyle.Bold)
-        LabelTotalStaff.Location = New Point(470, 20)
+        LabelTotalStaff.Location = New Point(650, 20)
         LabelTotalStaff.Name = "LabelTotalStaff"
         LabelTotalStaff.Size = New Size(130, 25)
         LabelTotalStaff.TabIndex = 2
@@ -115,7 +116,7 @@ Partial Class Form1
         BtnNewSale.BackColor = Color.MediumSeaGreen
         BtnNewSale.ForeColor = Color.White
         BtnNewSale.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
-        BtnNewSale.Location = New Point(30, 60)
+        BtnNewSale.Location = New Point(80, 70)
         BtnNewSale.Name = "BtnNewSale"
         BtnNewSale.Size = New Size(140, 40)
         BtnNewSale.TabIndex = 3
@@ -127,7 +128,7 @@ Partial Class Form1
         BtnAddCustomer.BackColor = Color.SteelBlue
         BtnAddCustomer.ForeColor = Color.White
         BtnAddCustomer.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
-        BtnAddCustomer.Location = New Point(190, 60)
+        BtnAddCustomer.Location = New Point(270, 70)
         BtnAddCustomer.Name = "BtnAddCustomer"
         BtnAddCustomer.Size = New Size(140, 40)
         BtnAddCustomer.TabIndex = 4
@@ -139,7 +140,7 @@ Partial Class Form1
         BtnAddStaff.BackColor = Color.DarkOrange
         BtnAddStaff.ForeColor = Color.White
         BtnAddStaff.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
-        BtnAddStaff.Location = New Point(350, 60)
+        BtnAddStaff.Location = New Point(460, 70)
         BtnAddStaff.Name = "BtnAddStaff"
         BtnAddStaff.Size = New Size(140, 40)
         BtnAddStaff.TabIndex = 5
@@ -151,7 +152,7 @@ Partial Class Form1
         BtnViewReports.BackColor = Color.MediumPurple
         BtnViewReports.ForeColor = Color.White
         BtnViewReports.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
-        BtnViewReports.Location = New Point(510, 60)
+        BtnViewReports.Location = New Point(650, 70)
         BtnViewReports.Name = "BtnViewReports"
         BtnViewReports.Size = New Size(140, 40)
         BtnViewReports.TabIndex = 6
@@ -162,7 +163,7 @@ Partial Class Form1
         ' 
         LabelRecentSales.AutoSize = True
         LabelRecentSales.Font = New Font("Segoe UI", 12.0!, FontStyle.Bold)
-        LabelRecentSales.Location = New Point(30, 120)
+        LabelRecentSales.Location = New Point(30, 130)
         LabelRecentSales.Name = "LabelRecentSales"
         LabelRecentSales.Size = New Size(110, 21)
         LabelRecentSales.TabIndex = 7
@@ -174,7 +175,7 @@ Partial Class Form1
         DataGridViewRecentSales.AllowUserToDeleteRows = False
         DataGridViewRecentSales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewRecentSales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewRecentSales.Location = New Point(30, 150)
+        DataGridViewRecentSales.Location = New Point(30, 160)
         DataGridViewRecentSales.Name = "DataGridViewRecentSales"
         DataGridViewRecentSales.ReadOnly = True
         DataGridViewRecentSales.RowTemplate.Height = 25
@@ -188,7 +189,7 @@ Partial Class Form1
         ToolStrip1.RenderMode = ToolStripRenderMode.System
         ToolStrip1.Padding = New Padding(8, 4, 0, 4)
         ToolStrip1.ImageScalingSize = New Size(28, 28)
-        ToolStrip1.Items.AddRange(New ToolStripItem() {ToolStripButtonNewSale, ToolStripButtonAddCustomer, ToolStripButtonAddStaff, ToolStripButtonViewReports})
+        ToolStrip1.Items.AddRange(New ToolStripItem() {ToolStripButtonNewSale, ToolStripButtonAddCustomer, ToolStripButtonAddStaff, ToolStripButtonViewReports, ToolStripButtonTheme})
         ToolStrip1.Location = New Point(0, 0)
         ToolStrip1.Name = "ToolStrip1"
         ToolStrip1.Size = New Size(1024, 32)
@@ -255,6 +256,21 @@ Partial Class Form1
         ToolStripButtonViewReports.Name = "ToolStripButtonViewReports"
         ToolStripButtonViewReports.Size = New Size(28, 29)
         ' 
+        ' ToolStripButtonTheme
+        ' 
+        ToolStripButtonTheme.AutoSize = False
+        ToolStripButtonTheme.Width = 36
+        ToolStripButtonTheme.Height = 36
+        ToolStripButtonTheme.Margin = New Padding(2, 0, 2, 0)
+        ToolStripButtonTheme.BackColor = Color.Transparent
+        ToolStripButtonTheme.DisplayStyle = ToolStripItemDisplayStyle.Image
+        ToolStripButtonTheme.IconChar = IconChar.Moon
+        ToolStripButtonTheme.IconColor = Color.DimGray
+        ToolStripButtonTheme.IconSize = 24
+        ToolStripButtonTheme.ToolTipText = "Toggle Light/Dark Mode"
+        ToolStripButtonTheme.Name = "ToolStripButtonTheme"
+        ToolStripButtonTheme.Size = New Size(28, 29)
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
@@ -273,6 +289,54 @@ Partial Class Form1
         CType(DataGridViewRecentSales, System.ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
+        ' Modernize dashboard buttons
+        BtnNewSale.FlatStyle = FlatStyle.Flat
+        BtnNewSale.FlatAppearance.BorderSize = 0
+        BtnNewSale.Padding = New Padding(0, 6, 0, 6)
+        BtnNewSale.Font = New Font("Segoe UI", 11.0!, FontStyle.Bold)
+        BtnNewSale.Cursor = Cursors.Hand
+        BtnNewSale.TabStop = False
+        BtnAddCustomer.FlatStyle = FlatStyle.Flat
+        BtnAddCustomer.FlatAppearance.BorderSize = 0
+        BtnAddCustomer.Padding = New Padding(0, 6, 0, 6)
+        BtnAddCustomer.Font = New Font("Segoe UI", 11.0!, FontStyle.Bold)
+        BtnAddCustomer.Cursor = Cursors.Hand
+        BtnAddCustomer.TabStop = False
+        BtnAddStaff.FlatStyle = FlatStyle.Flat
+        BtnAddStaff.FlatAppearance.BorderSize = 0
+        BtnAddStaff.Padding = New Padding(0, 6, 0, 6)
+        BtnAddStaff.Font = New Font("Segoe UI", 11.0!, FontStyle.Bold)
+        BtnAddStaff.Cursor = Cursors.Hand
+        BtnAddStaff.TabStop = False
+        BtnViewReports.FlatStyle = FlatStyle.Flat
+        BtnViewReports.FlatAppearance.BorderSize = 0
+        BtnViewReports.Padding = New Padding(0, 6, 0, 6)
+        BtnViewReports.Font = New Font("Segoe UI", 11.0!, FontStyle.Bold)
+        BtnViewReports.Cursor = Cursors.Hand
+        BtnViewReports.TabStop = False
+        ' Center dashboard stats and buttons
+        LabelTotalSales.Location = New Point(80, 20)
+        LabelTotalCustomers.Location = New Point(340, 20)
+        LabelTotalStaff.Location = New Point(650, 20)
+        BtnNewSale.Location = New Point(80, 70)
+        BtnAddCustomer.Location = New Point(270, 70)
+        BtnAddStaff.Location = New Point(460, 70)
+        BtnViewReports.Location = New Point(650, 70)
+        ' Add more vertical spacing
+        LabelRecentSales.Location = New Point(30, 130)
+        DataGridViewRecentSales.Location = New Point(30, 160)
+        ' Subtle shadow/border for dashboard panel
+        PanelDashboard.BorderStyle = BorderStyle.Fixed3D
+        ' Remove DataGridView border for cleaner look
+        DataGridViewRecentSales.BorderStyle = BorderStyle.None
+        ' Set consistent font for the form
+        Me.Font = New Font("Segoe UI", 10.0!)
+        ' Modernize StatusStrip
+        StatusStrip1.BackColor = Color.WhiteSmoke
+        StatusStrip1.Font = New Font("Segoe UI", 10.0!)
+        ToolStripStatusLabel1.ForeColor = Color.DimGray
+        ToolStripStatusLabel1.Spring = True
+        ToolStripStatusLabel1.TextAlign = ContentAlignment.MiddleLeft
     End Sub
 
     Friend WithEvents StatusStrip1 As StatusStrip
@@ -292,4 +356,5 @@ Partial Class Form1
     Friend WithEvents ToolStripButtonAddCustomer As IconToolStripButton
     Friend WithEvents ToolStripButtonAddStaff As IconToolStripButton
     Friend WithEvents ToolStripButtonViewReports As IconToolStripButton
+    Friend WithEvents ToolStripButtonTheme As IconToolStripButton
 End Class

@@ -30,6 +30,7 @@ Partial Class CustomerForm
         ' BtnAdd
         ' 
         Me.BtnAdd.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnAdd.ForeColor = System.Drawing.Color.White
         Me.BtnAdd.Location = New System.Drawing.Point(650, 30)
         Me.BtnAdd.Name = "BtnAdd"
@@ -41,6 +42,7 @@ Partial Class CustomerForm
         ' BtnEdit
         ' 
         Me.BtnEdit.BackColor = System.Drawing.Color.SteelBlue
+        Me.BtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnEdit.ForeColor = System.Drawing.Color.White
         Me.BtnEdit.Location = New System.Drawing.Point(650, 80)
         Me.BtnEdit.Name = "BtnEdit"
@@ -52,6 +54,7 @@ Partial Class CustomerForm
         ' BtnDelete
         ' 
         Me.BtnDelete.BackColor = System.Drawing.Color.IndianRed
+        Me.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnDelete.ForeColor = System.Drawing.Color.White
         Me.BtnDelete.Location = New System.Drawing.Point(650, 130)
         Me.BtnDelete.Name = "BtnDelete"
@@ -63,6 +66,7 @@ Partial Class CustomerForm
         ' BtnExport
         ' 
         Me.BtnExport.BackColor = System.Drawing.Color.DarkOrange
+        Me.BtnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnExport.ForeColor = System.Drawing.Color.White
         Me.BtnExport.Location = New System.Drawing.Point(650, 180)
         Me.BtnExport.Name = "BtnExport"
@@ -89,6 +93,32 @@ Partial Class CustomerForm
         Me.Text = "Customer Management"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        ' Modernize buttons and DataGridView for CustomerForm
+        BtnAdd.FlatStyle = FlatStyle.Flat
+        BtnAdd.FlatAppearance.BorderSize = 0
+        BtnAdd.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        BtnAdd.Cursor = Cursors.Hand
+        BtnEdit.FlatStyle = FlatStyle.Flat
+        BtnEdit.FlatAppearance.BorderSize = 0
+        BtnEdit.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        BtnEdit.Cursor = Cursors.Hand
+        BtnDelete.FlatStyle = FlatStyle.Flat
+        BtnDelete.FlatAppearance.BorderSize = 0
+        BtnDelete.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        BtnDelete.Cursor = Cursors.Hand
+        BtnExport.FlatStyle = FlatStyle.Flat
+        BtnExport.FlatAppearance.BorderSize = 0
+        BtnExport.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        BtnExport.Cursor = Cursors.Hand
+        ' DataGridView modern look
+        DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke
+        DataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black
+        DataGridView1.GridColor = Color.Gainsboro
+        DataGridView1.BorderStyle = BorderStyle.None
+        DataGridView1.DefaultCellStyle.Font = New Font("Segoe UI", 10.0!)
+        DataGridView1.RowHeadersVisible = False
+        ' Set consistent font for the form
+        Me.Font = New Font("Segoe UI", 10.0!)
     End Sub
 
     Friend WithEvents DataGridView1 As DataGridView

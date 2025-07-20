@@ -142,6 +142,32 @@ Partial Class SalesForm
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
+        ' Modernize buttons and DataGridView for SalesForm
+        BtnAddItem.FlatStyle = FlatStyle.Flat
+        BtnAddItem.FlatAppearance.BorderSize = 0
+        BtnAddItem.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        BtnAddItem.Cursor = Cursors.Hand
+        BtnRemoveItem.FlatStyle = FlatStyle.Flat
+        BtnRemoveItem.FlatAppearance.BorderSize = 0
+        BtnRemoveItem.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        BtnRemoveItem.Cursor = Cursors.Hand
+        BtnSaveSale.FlatStyle = FlatStyle.Flat
+        BtnSaveSale.FlatAppearance.BorderSize = 0
+        BtnSaveSale.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        BtnSaveSale.Cursor = Cursors.Hand
+        BtnExport.FlatStyle = FlatStyle.Flat
+        BtnExport.FlatAppearance.BorderSize = 0
+        BtnExport.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        BtnExport.Cursor = Cursors.Hand
+        ' DataGridView modern look
+        DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke
+        DataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black
+        DataGridView1.GridColor = Color.Gainsboro
+        DataGridView1.BorderStyle = BorderStyle.None
+        DataGridView1.DefaultCellStyle.Font = New Font("Segoe UI", 10.0!)
+        DataGridView1.RowHeadersVisible = False
+        ' Set consistent font for the form
+        Me.Font = New Font("Segoe UI", 10.0!)
     End Sub
 
     Friend WithEvents ComboBoxCustomer As ComboBox

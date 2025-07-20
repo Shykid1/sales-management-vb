@@ -30,7 +30,11 @@ Partial Class StaffForm
         ' BtnAdd
         ' 
         Me.BtnAdd.BackColor = System.Drawing.Color.MediumSeaGreen
+        Me.BtnAdd.FlatAppearance.BorderSize = 0
+        Me.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnAdd.ForeColor = System.Drawing.Color.White
+        Me.BtnAdd.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        Me.BtnAdd.Cursor = Cursors.Hand
         Me.BtnAdd.Location = New System.Drawing.Point(650, 30)
         Me.BtnAdd.Name = "BtnAdd"
         Me.BtnAdd.Size = New System.Drawing.Size(100, 35)
@@ -41,7 +45,11 @@ Partial Class StaffForm
         ' BtnEdit
         ' 
         Me.BtnEdit.BackColor = System.Drawing.Color.SteelBlue
+        Me.BtnEdit.FlatAppearance.BorderSize = 0
+        Me.BtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnEdit.ForeColor = System.Drawing.Color.White
+        Me.BtnEdit.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        Me.BtnEdit.Cursor = Cursors.Hand
         Me.BtnEdit.Location = New System.Drawing.Point(650, 80)
         Me.BtnEdit.Name = "BtnEdit"
         Me.BtnEdit.Size = New System.Drawing.Size(100, 35)
@@ -52,7 +60,11 @@ Partial Class StaffForm
         ' BtnDelete
         ' 
         Me.BtnDelete.BackColor = System.Drawing.Color.IndianRed
+        Me.BtnDelete.FlatAppearance.BorderSize = 0
+        Me.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnDelete.ForeColor = System.Drawing.Color.White
+        Me.BtnDelete.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        Me.BtnDelete.Cursor = Cursors.Hand
         Me.BtnDelete.Location = New System.Drawing.Point(650, 130)
         Me.BtnDelete.Name = "BtnDelete"
         Me.BtnDelete.Size = New System.Drawing.Size(100, 35)
@@ -63,7 +75,11 @@ Partial Class StaffForm
         ' BtnExport
         ' 
         Me.BtnExport.BackColor = System.Drawing.Color.DarkOrange
+        Me.BtnExport.FlatAppearance.BorderSize = 0
+        Me.BtnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnExport.ForeColor = System.Drawing.Color.White
+        Me.BtnExport.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        Me.BtnExport.Cursor = Cursors.Hand
         Me.BtnExport.Location = New System.Drawing.Point(650, 180)
         Me.BtnExport.Name = "BtnExport"
         Me.BtnExport.Size = New System.Drawing.Size(100, 35)
@@ -89,6 +105,8 @@ Partial Class StaffForm
         Me.Text = "Staff Management"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        ' Set consistent font for the form
+        Me.Font = New Font("Segoe UI", 10.0!)
     End Sub
 
     Friend WithEvents DataGridView1 As DataGridView

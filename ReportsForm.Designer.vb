@@ -127,6 +127,9 @@ Partial Class ReportsForm
         ' BtnExport
         ' 
         Me.BtnExport.BackColor = System.Drawing.Color.DarkOrange
+        Me.BtnExport.FlatAppearance.BorderSize = 0
+        Me.BtnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnExport.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.BtnExport.ForeColor = System.Drawing.Color.White
         Me.BtnExport.Location = New System.Drawing.Point(900, 420)
         Me.BtnExport.Name = "BtnExport"
@@ -161,6 +164,20 @@ Partial Class ReportsForm
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
+        ' Modernize buttons and DataGridView for ReportsForm
+        BtnExport.FlatStyle = FlatStyle.Flat
+        BtnExport.FlatAppearance.BorderSize = 0
+        BtnExport.Font = New Font("Segoe UI", 10.0!, FontStyle.Bold)
+        BtnExport.Cursor = Cursors.Hand
+        ' DataGridView modern look
+        DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke
+        DataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black
+        DataGridView1.GridColor = Color.Gainsboro
+        DataGridView1.BorderStyle = BorderStyle.None
+        DataGridView1.DefaultCellStyle.Font = New Font("Segoe UI", 10.0!)
+        DataGridView1.RowHeadersVisible = False
+        ' Set consistent font for the form
+        Me.Font = New Font("Segoe UI", 10.0!)
     End Sub
 
     Friend WithEvents ComboBoxCustomer As ComboBox
