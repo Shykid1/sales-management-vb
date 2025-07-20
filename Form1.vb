@@ -5,6 +5,11 @@
         ' Initialize the data service and load initial data
         InitializeApplication()
         UpdateDashboard()
+        ' Wire up ToolStrip button click events
+        AddHandler ToolStripButtonNewSale.Click, AddressOf BtnNewSale_Click
+        AddHandler ToolStripButtonAddCustomer.Click, AddressOf BtnAddCustomer_Click
+        AddHandler ToolStripButtonAddStaff.Click, AddressOf BtnAddStaff_Click
+        AddHandler ToolStripButtonViewReports.Click, AddressOf BtnViewReports_Click
     End Sub
 
     Private Sub InitializeApplication()
@@ -40,11 +45,8 @@
         DataGridViewRecentSales.DataSource = recent
     End Sub
 
-    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
-        Application.Exit()
-    End Sub
-
-    Private Sub SalesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesToolStripMenuItem.Click
+    Private Sub BtnNewSale_Click(sender As Object, e As EventArgs) Handles BtnNewSale.Click
+        ' Open SalesForm
         Using frm As New SalesForm()
             If frm.ShowDialog(Me) = DialogResult.OK Then
                 UpdateDashboard()
@@ -52,39 +54,23 @@
         End Using
     End Sub
 
-    Private Sub CustomersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomersToolStripMenuItem.Click
+    Private Sub BtnAddCustomer_Click(sender As Object, e As EventArgs) Handles BtnAddCustomer.Click
         Using frm As New CustomerForm()
             frm.ShowDialog(Me)
             UpdateDashboard()
         End Using
     End Sub
 
-    Private Sub StaffToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StaffToolStripMenuItem.Click
+    Private Sub BtnAddStaff_Click(sender As Object, e As EventArgs) Handles BtnAddStaff.Click
         Using frm As New StaffForm()
             frm.ShowDialog(Me)
             UpdateDashboard()
         End Using
     End Sub
 
-    Private Sub ReportsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportsToolStripMenuItem.Click
+    Private Sub BtnViewReports_Click(sender As Object, e As EventArgs) Handles BtnViewReports.Click
         Using frm As New ReportsForm()
             frm.ShowDialog(Me)
         End Using
-    End Sub
-
-    Private Sub BtnNewSale_Click(sender As Object, e As EventArgs) Handles BtnNewSale.Click
-        SalesToolStripMenuItem.PerformClick()
-    End Sub
-
-    Private Sub BtnAddCustomer_Click(sender As Object, e As EventArgs) Handles BtnAddCustomer.Click
-        CustomersToolStripMenuItem.PerformClick()
-    End Sub
-
-    Private Sub BtnAddStaff_Click(sender As Object, e As EventArgs) Handles BtnAddStaff.Click
-        StaffToolStripMenuItem.PerformClick()
-    End Sub
-
-    Private Sub BtnViewReports_Click(sender As Object, e As EventArgs) Handles BtnViewReports.Click
-        ReportsToolStripMenuItem.PerformClick()
     End Sub
 End Class

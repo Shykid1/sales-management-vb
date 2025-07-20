@@ -1,4 +1,7 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿Imports FontAwesome.Sharp
+Imports System.Drawing
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
@@ -22,13 +25,6 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        MenuStrip1 = New MenuStrip()
-        FileToolStripMenuItem = New ToolStripMenuItem()
-        SalesToolStripMenuItem = New ToolStripMenuItem()
-        CustomersToolStripMenuItem = New ToolStripMenuItem()
-        StaffToolStripMenuItem = New ToolStripMenuItem()
-        ReportsToolStripMenuItem = New ToolStripMenuItem()
-        ExitToolStripMenuItem = New ToolStripMenuItem()
         StatusStrip1 = New StatusStrip()
         ToolStripStatusLabel1 = New ToolStripStatusLabel()
         PanelDashboard = New Panel()
@@ -41,57 +37,15 @@ Partial Class Form1
         BtnViewReports = New Button()
         LabelRecentSales = New Label()
         DataGridViewRecentSales = New DataGridView()
-        MenuStrip1.SuspendLayout()
+        ToolStrip1 = New ToolStrip()
+        ToolStripButtonNewSale = New IconToolStripButton()
+        ToolStripButtonAddCustomer = New IconToolStripButton()
+        ToolStripButtonAddStaff = New IconToolStripButton()
+        ToolStripButtonViewReports = New IconToolStripButton()
         StatusStrip1.SuspendLayout()
         PanelDashboard.SuspendLayout()
         CType(DataGridViewRecentSales, System.ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        ' 
-        ' MenuStrip1
-        ' 
-        MenuStrip1.Items.AddRange(New ToolStripItem() {FileToolStripMenuItem})
-        MenuStrip1.Location = New Point(0, 0)
-        MenuStrip1.Name = "MenuStrip1"
-        MenuStrip1.Size = New Size(1024, 24)
-        MenuStrip1.TabIndex = 0
-        MenuStrip1.Text = "MenuStrip1"
-        ' 
-        ' FileToolStripMenuItem
-        ' 
-        FileToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {SalesToolStripMenuItem, CustomersToolStripMenuItem, StaffToolStripMenuItem, ReportsToolStripMenuItem, ExitToolStripMenuItem})
-        FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        FileToolStripMenuItem.Size = New Size(37, 20)
-        FileToolStripMenuItem.Text = "&File"
-        ' 
-        ' SalesToolStripMenuItem
-        ' 
-        SalesToolStripMenuItem.Name = "SalesToolStripMenuItem"
-        SalesToolStripMenuItem.Size = New Size(180, 22)
-        SalesToolStripMenuItem.Text = "&Sales"
-        ' 
-        ' CustomersToolStripMenuItem
-        ' 
-        CustomersToolStripMenuItem.Name = "CustomersToolStripMenuItem"
-        CustomersToolStripMenuItem.Size = New Size(180, 22)
-        CustomersToolStripMenuItem.Text = "&Customers"
-        ' 
-        ' StaffToolStripMenuItem
-        ' 
-        StaffToolStripMenuItem.Name = "StaffToolStripMenuItem"
-        StaffToolStripMenuItem.Size = New Size(180, 22)
-        StaffToolStripMenuItem.Text = "S&taff"
-        ' 
-        ' ReportsToolStripMenuItem
-        ' 
-        ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        ReportsToolStripMenuItem.Size = New Size(180, 22)
-        ReportsToolStripMenuItem.Text = "&Reports"
-        ' 
-        ' ExitToolStripMenuItem
-        ' 
-        ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        ExitToolStripMenuItem.Size = New Size(180, 22)
-        ExitToolStripMenuItem.Text = "E&xit"
         ' 
         ' StatusStrip1
         ' 
@@ -227,20 +181,91 @@ Partial Class Form1
         DataGridViewRecentSales.Size = New Size(900, 380)
         DataGridViewRecentSales.TabIndex = 8
         ' 
+        ' ToolStrip1
+        ' 
+        ToolStrip1.BackColor = Color.WhiteSmoke
+        ToolStrip1.GripStyle = ToolStripGripStyle.Hidden
+        ToolStrip1.RenderMode = ToolStripRenderMode.System
+        ToolStrip1.Padding = New Padding(8, 4, 0, 4)
+        ToolStrip1.ImageScalingSize = New Size(28, 28)
+        ToolStrip1.Items.AddRange(New ToolStripItem() {ToolStripButtonNewSale, ToolStripButtonAddCustomer, ToolStripButtonAddStaff, ToolStripButtonViewReports})
+        ToolStrip1.Location = New Point(0, 0)
+        ToolStrip1.Name = "ToolStrip1"
+        ToolStrip1.Size = New Size(1024, 32)
+        ToolStrip1.TabIndex = 10
+        ToolStrip1.Text = "ToolStrip1"
+        ' 
+        ' ToolStripButtonNewSale
+        ' 
+        ToolStripButtonNewSale.AutoSize = False
+        ToolStripButtonNewSale.Width = 36
+        ToolStripButtonNewSale.Height = 36
+        ToolStripButtonNewSale.Margin = New Padding(2, 0, 2, 0)
+        ToolStripButtonNewSale.BackColor = Color.Transparent
+        ToolStripButtonNewSale.DisplayStyle = ToolStripItemDisplayStyle.Image
+        ToolStripButtonNewSale.IconChar = IconChar.ShoppingCart
+        ToolStripButtonNewSale.IconColor = Color.MediumSeaGreen
+        ToolStripButtonNewSale.IconSize = 24
+        ToolStripButtonNewSale.ToolTipText = "New Sale"
+        ToolStripButtonNewSale.Name = "ToolStripButtonNewSale"
+        ToolStripButtonNewSale.Size = New Size(28, 29)
+        ' 
+        ' ToolStripButtonAddCustomer
+        ' 
+        ToolStripButtonAddCustomer.AutoSize = False
+        ToolStripButtonAddCustomer.Width = 36
+        ToolStripButtonAddCustomer.Height = 36
+        ToolStripButtonAddCustomer.Margin = New Padding(2, 0, 2, 0)
+        ToolStripButtonAddCustomer.BackColor = Color.Transparent
+        ToolStripButtonAddCustomer.DisplayStyle = ToolStripItemDisplayStyle.Image
+        ToolStripButtonAddCustomer.IconChar = IconChar.UserPlus
+        ToolStripButtonAddCustomer.IconColor = Color.SteelBlue
+        ToolStripButtonAddCustomer.IconSize = 24
+        ToolStripButtonAddCustomer.ToolTipText = "Add Customer"
+        ToolStripButtonAddCustomer.Name = "ToolStripButtonAddCustomer"
+        ToolStripButtonAddCustomer.Size = New Size(28, 29)
+        ' 
+        ' ToolStripButtonAddStaff
+        ' 
+        ToolStripButtonAddStaff.AutoSize = False
+        ToolStripButtonAddStaff.Width = 36
+        ToolStripButtonAddStaff.Height = 36
+        ToolStripButtonAddStaff.Margin = New Padding(2, 0, 2, 0)
+        ToolStripButtonAddStaff.BackColor = Color.Transparent
+        ToolStripButtonAddStaff.DisplayStyle = ToolStripItemDisplayStyle.Image
+        ToolStripButtonAddStaff.IconChar = IconChar.UserTie
+        ToolStripButtonAddStaff.IconColor = Color.DarkOrange
+        ToolStripButtonAddStaff.IconSize = 24
+        ToolStripButtonAddStaff.ToolTipText = "Add Staff"
+        ToolStripButtonAddStaff.Name = "ToolStripButtonAddStaff"
+        ToolStripButtonAddStaff.Size = New Size(28, 29)
+        ' 
+        ' ToolStripButtonViewReports
+        ' 
+        ToolStripButtonViewReports.AutoSize = False
+        ToolStripButtonViewReports.Width = 36
+        ToolStripButtonViewReports.Height = 36
+        ToolStripButtonViewReports.Margin = New Padding(2, 0, 2, 0)
+        ToolStripButtonViewReports.BackColor = Color.Transparent
+        ToolStripButtonViewReports.DisplayStyle = ToolStripItemDisplayStyle.Image
+        ToolStripButtonViewReports.IconChar = IconChar.ChartBar
+        ToolStripButtonViewReports.IconColor = Color.MediumPurple
+        ToolStripButtonViewReports.IconSize = 24
+        ToolStripButtonViewReports.ToolTipText = "View Reports"
+        ToolStripButtonViewReports.Name = "ToolStripButtonViewReports"
+        ToolStripButtonViewReports.Size = New Size(28, 29)
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1024, 661)
+        Controls.Add(ToolStrip1)
         Controls.Add(PanelDashboard)
         Controls.Add(StatusStrip1)
-        Controls.Add(MenuStrip1)
-        MainMenuStrip = MenuStrip1
         Name = "Form1"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Sales Management System"
-        MenuStrip1.ResumeLayout(False)
-        MenuStrip1.PerformLayout()
         StatusStrip1.ResumeLayout(False)
         StatusStrip1.PerformLayout()
         PanelDashboard.ResumeLayout(False)
@@ -250,13 +275,6 @@ Partial Class Form1
         PerformLayout()
     End Sub
 
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SalesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CustomersToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents StaffToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ReportsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents PanelDashboard As Panel
@@ -269,4 +287,9 @@ Partial Class Form1
     Friend WithEvents BtnViewReports As Button
     Friend WithEvents LabelRecentSales As Label
     Friend WithEvents DataGridViewRecentSales As DataGridView
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents ToolStripButtonNewSale As IconToolStripButton
+    Friend WithEvents ToolStripButtonAddCustomer As IconToolStripButton
+    Friend WithEvents ToolStripButtonAddStaff As IconToolStripButton
+    Friend WithEvents ToolStripButtonViewReports As IconToolStripButton
 End Class
