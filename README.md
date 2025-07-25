@@ -63,3 +63,15 @@ A modern Windows Forms application for managing sales, customers, staff, and gen
 - Visual Studio 2022
 - Git for version control
 - NuGet package manager
+
+## Data Storage
+The application uses JSON files for data storage, located in the "Data" directory under the application's startup path. For a clean project submission:
+
+1. Delete or clear the following files in the Data directory (if they exist):
+   - Customers.json
+   - Sales.json
+   - Staff.json
+   - SaleItems.json
+
+2. When the application starts for the first time, it will automatically create these files as needed with empty data sets.
+
