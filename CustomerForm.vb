@@ -45,24 +45,68 @@ Public Class CustomerForm
     End Sub
 
     Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles BtnExport.Click
-        Dim exportType = MessageBox.Show("Export as CSV/Excel? (Yes for CSV, No for JSON)", "Export Type", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-        If exportType = DialogResult.Cancel Then Return
-        Dim sfd As New SaveFileDialog()
-        If exportType = DialogResult.Yes Then
-            sfd.Filter = "CSV Files (*.csv)|*.csv"
-            sfd.FileName = $"Customers_{Date.Now:yyyyMMddHHmmss}.csv"
-        Else
-            sfd.Filter = "JSON Files (*.json)|*.json"
-            sfd.FileName = $"Customers_{Date.Now:yyyyMMddHHmmss}.json"
-        End If
-        If sfd.ShowDialog() = DialogResult.OK Then
-            If exportType = DialogResult.Yes Then
-                CsvExportHelper.ExportListToCsv(_customers.ToList(), sfd.FileName)
-            Else
-                Dim json = Newtonsoft.Json.JsonConvert.SerializeObject(_customers.ToList(), Newtonsoft.Json.Formatting.Indented)
-                IO.File.WriteAllText(sfd.FileName, json)
+        Try
+            Using saveFileDialog As New SaveFileDialog()
+                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*"
+                saveFileDialog.FilterIndex = 1
+                saveFileDialog.FileName = $"Customers_{DateTime.Now:yyyyMMddHHmmss}"
+                If saveFileDialog.ShowDialog() = DialogResult.OK Then
+                    Cursor = Cursors.WaitCursor
+                    Dim dt = ToDataTableFromGrid(DataGridView1)
+                    If dt.Rows.Count > 0 Then
+                        ExcelExportHelper.ExportDataTableToExcel(dt, saveFileDialog.FileName, "Customers")
+                        MessageBox.Show("Export completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("No data to export!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End If
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"Error exporting data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Function ToDataTableFromGrid(dgv As DataGridView) As DataTable
+        Dim dt As New DataTable()
+        For Each col As DataGridViewColumn In dgv.Columns
+            dt.Columns.Add(col.HeaderText)
+        Next
+        For Each row As DataGridViewRow In dgv.Rows
+            If Not row.IsNewRow Then
+                Dim values(row.Cells.Count - 1) As Object
+                For i = 0 To row.Cells.Count - 1
+                    values(i) = row.Cells(i).Value
+                Next
+                dt.Rows.Add(values)
             End If
-            MessageBox.Show("Exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
+        Next
+        Return dt
+    End Function
+
+    Private Sub BtnExportJson_Click(sender As Object, e As EventArgs)
+        Try
+            Using saveFileDialog As New SaveFileDialog()
+                saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*"
+                saveFileDialog.FilterIndex = 1
+                saveFileDialog.FileName = $"Customers_{DateTime.Now:yyyyMMddHHmmss}"
+
+                If saveFileDialog.ShowDialog() = DialogResult.OK Then
+                    Cursor = Cursors.WaitCursor
+                    Dim data = TryCast(DataGridView1.DataSource, System.ComponentModel.BindingList(Of Customer))
+                    If data IsNot Nothing Then
+                        JsonExportHelper.ExportListToJson(data.ToList(), saveFileDialog.FileName)
+                        MessageBox.Show("JSON export completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("No data to export!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End If
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"Error exporting data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Cursor = Cursors.Default
+        End Try
     End Sub
 End Class

@@ -18,6 +18,8 @@ Partial Class ReportsForm
         Me.LabelTotalSales = New System.Windows.Forms.Label()
         Me.LabelTotalAmount = New System.Windows.Forms.Label()
         Me.BtnExport = New System.Windows.Forms.Button()
+        Me.BtnExportJson = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         ' 
@@ -138,11 +140,26 @@ Partial Class ReportsForm
         Me.BtnExport.Text = "Export"
         Me.BtnExport.UseVisualStyleBackColor = False
         ' 
+        ' BtnExportJson
+        ' 
+        Me.BtnExportJson.BackColor = System.Drawing.Color.SteelBlue
+        Me.BtnExportJson.FlatAppearance.BorderSize = 0
+        Me.BtnExportJson.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnExportJson.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.BtnExportJson.ForeColor = System.Drawing.Color.White
+        Me.BtnExportJson.Location = New System.Drawing.Point(780, 420)
+        Me.BtnExportJson.Name = "BtnExportJson"
+        Me.BtnExportJson.Size = New System.Drawing.Size(100, 35)
+        Me.BtnExportJson.TabIndex = 12
+        Me.BtnExportJson.Text = "Export JSON"
+        Me.BtnExportJson.UseVisualStyleBackColor = False
+        ' 
         ' ReportsForm
         ' 
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1040, 480)
+        Me.Controls.Add(Me.BtnExportJson)
         Me.Controls.Add(Me.BtnExport)
         Me.Controls.Add(Me.LabelTotalAmount)
         Me.Controls.Add(Me.LabelTotalSales)
@@ -178,6 +195,9 @@ Partial Class ReportsForm
         DataGridView1.RowHeadersVisible = False
         ' Set consistent font for the form
         Me.Font = New Font("Segoe UI", 10.0!)
+        ' Set tooltips for export buttons
+        Me.ToolTip1.SetToolTip(Me.BtnExport, "Export to Excel (.xlsx)")
+        Me.ToolTip1.SetToolTip(Me.BtnExportJson, "Export to JSON (.json)")
     End Sub
 
     Friend WithEvents ComboBoxCustomer As ComboBox
@@ -192,4 +212,6 @@ Partial Class ReportsForm
     Friend WithEvents LabelTotalSales As Label
     Friend WithEvents LabelTotalAmount As Label
     Friend WithEvents BtnExport As Button
+    Friend WithEvents BtnExportJson As Button
+    Friend WithEvents ToolTip1 As ToolTip
 End Class

@@ -30,11 +30,12 @@ Public Class SalesForm
     End Sub
 
     Private Sub BtnAddItem_Click(sender As Object, e As EventArgs) Handles BtnAddItem.Click
-        Dim itemForm As New SaleItemForm()
-        If itemForm.ShowDialog() = DialogResult.OK Then
-            _items.Add(itemForm.SaleItem)
-            UpdateTotal()
-        End If
+        Using itemForm As New SaleItemForm()
+            If itemForm.ShowDialog() = DialogResult.OK Then
+                _items.Add(itemForm.SaleItem)
+                UpdateTotal()
+            End If
+        End Using
     End Sub
 
     Private Sub BtnRemoveItem_Click(sender As Object, e As EventArgs) Handles BtnRemoveItem.Click
@@ -53,43 +54,79 @@ Public Class SalesForm
             MessageBox.Show("Please select customer, staff, and add at least one item.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
+
         Dim sale As New Sale With {
-            .CustomerId = CType(ComboBoxCustomer.SelectedItem, Customer).Id,
-            .StaffId = CType(ComboBoxStaff.SelectedItem, Staff).Id,
+            .CustomerId = DirectCast(ComboBoxCustomer.SelectedItem, Customer).Id,
+            .StaffId = DirectCast(ComboBoxStaff.SelectedItem, Staff).Id,
             .Items = _items.ToList()
         }
+
         Dim sales = _dataService.LoadData(Of Sale)()
         sales.Add(sale)
         _dataService.SaveData(sales)
         MessageBox.Show("Sale saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Me.DialogResult = DialogResult.OK
-        Me.Close()
+        DialogResult = DialogResult.OK
+        Close()
     End Sub
 
     Private Sub BtnExport_Click(sender As Object, e As EventArgs) Handles BtnExport.Click
-        Dim exportType = MessageBox.Show("Export as CSV/Excel? (Yes for CSV, No for JSON)", "Export Type", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-        If exportType = DialogResult.Cancel Then Return
-        Dim sfd As New SaveFileDialog()
-        If exportType = DialogResult.Yes Then
-            sfd.Filter = "CSV Files (*.csv)|*.csv"
-            sfd.FileName = $"Sale_{Date.Now:yyyyMMddHHmmss}.csv"
-        Else
-            sfd.Filter = "JSON Files (*.json)|*.json"
-            sfd.FileName = $"Sale_{Date.Now:yyyyMMddHHmmss}.json"
-        End If
-        If sfd.ShowDialog() = DialogResult.OK Then
-            If exportType = DialogResult.Yes Then
-                CsvExportHelper.ExportListToCsv(_items.ToList(), sfd.FileName)
-            Else
-                Dim sale As New Sale With {
-                    .CustomerId = CType(ComboBoxCustomer.SelectedItem, Customer).Id,
-                    .StaffId = CType(ComboBoxStaff.SelectedItem, Staff).Id,
-                    .Items = _items.ToList()
-                }
-                Dim json = Newtonsoft.Json.JsonConvert.SerializeObject(sale, Newtonsoft.Json.Formatting.Indented)
-                IO.File.WriteAllText(sfd.FileName, json)
+        Try
+            Using saveFileDialog As New SaveFileDialog()
+                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*"
+                saveFileDialog.FilterIndex = 1
+                saveFileDialog.FileName = $"SaleItems_{DateTime.Now:yyyyMMddHHmmss}"
+                If saveFileDialog.ShowDialog() = DialogResult.OK Then
+                    Cursor = Cursors.WaitCursor
+                    Dim dt = ToDataTableFromGrid(DataGridView1)
+                    If dt.Rows.Count > 0 Then
+                        ExcelExportHelper.ExportDataTableToExcel(dt, saveFileDialog.FileName, "Sale Items")
+                        MessageBox.Show("Export completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("No data to export!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End If
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"Error exporting data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Function ToDataTableFromGrid(dgv As DataGridView) As DataTable
+        Dim dt As New DataTable()
+        For Each col As DataGridViewColumn In dgv.Columns
+            dt.Columns.Add(col.HeaderText)
+        Next
+        For Each row As DataGridViewRow In dgv.Rows
+            If Not row.IsNewRow Then
+                Dim values(row.Cells.Count - 1) As Object
+                For i = 0 To row.Cells.Count - 1
+                    values(i) = row.Cells(i).Value
+                Next
+                dt.Rows.Add(values)
             End If
-            MessageBox.Show("Exported successfully!", "Export", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
+        Next
+        Return dt
+    End Function
+
+    Private Sub BtnExportJson_Click(sender As Object, e As EventArgs)
+        Try
+            Using saveFileDialog As New SaveFileDialog()
+                saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*"
+                saveFileDialog.FilterIndex = 1
+                saveFileDialog.FileName = $"SaleItems_{DateTime.Now:yyyyMMddHHmmss}"
+
+                If saveFileDialog.ShowDialog() = DialogResult.OK Then
+                    Cursor = Cursors.WaitCursor
+                    JsonExportHelper.ExportListToJson(_items.ToList(), saveFileDialog.FileName)
+                    MessageBox.Show("JSON export completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show($"Error exporting data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Cursor = Cursors.Default
+        End Try
     End Sub
 End Class
